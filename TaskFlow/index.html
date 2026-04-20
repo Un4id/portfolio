@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskFlow — Gestor de Tareas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <span>TaskFlow</span>
+      </div>
+      <nav class="filters">
+        <button class="filter-btn active" data-filter="all">
+          <span class="filter-icon">▤</span> Todas
+          <span class="count" id="count-all">0</span>
+        </button>
+        <button class="filter-btn" data-filter="pending">
+          <span class="filter-icon">○</span> Pendientes
+          <span class="count" id="count-pending">0</span>
+        </button>
+        <button class="filter-btn" data-filter="done">
+          <span class="filter-icon">●</span> Completadas
+          <span class="count" id="count-done">0</span>
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="progress-label">
+          <span>Progreso hoy</span>
+          <span id="progress-text">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="top-bar">
+        <div>
+          <h1 id="filter-title">Todas las tareas</h1>
+          <p class="date" id="today-date"></p>
+        </div>
+        <button class="btn-new" id="btn-open-modal">+ Nueva tarea</button>
+      </header>
+
+      <div class="task-list" id="task-list"></div>
+
+      <div class="empty-state" id="empty-state" style="display:none">
+        <div class="empty-icon">✦</div>
+        <p>No hay tareas aquí</p>
+        <span>Añade una nueva para empezar</span>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Nueva tarea</h2>
+        <button class="modal-close" id="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <label>Título</label>
+          <input type="text" id="input-title" placeholder="¿Qué necesitas hacer?" />
+        </div>
+        <div class="field">
+          <label>Descripción (opcional)</label>
+          <textarea id="input-desc" rows="3" placeholder="Añade más detalles..."></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Prioridad</label>
+            <select id="input-priority">
+              <option value="low">Baja</option>
+              <option value="medium" selected>Media</option>
+              <option value="high">Alta</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Fecha límite</label>
+            <input type="date" id="input-date" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="btn-cancel">Cancelar</button>
+        <button class="btn-save" id="btn-save">Guardar tarea</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

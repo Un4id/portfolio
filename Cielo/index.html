@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cielo — App del Tiempo</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="bg-scene" id="bg-scene">
+    <div class="bg-layer layer-1"></div>
+    <div class="bg-layer layer-2"></div>
+    <div class="particles" id="particles"></div>
+  </div>
+
+  <div class="app">
+    <!-- Search bar -->
+    <header class="header">
+      <div class="brand">
+        <span class="brand-icon">◎</span>
+        <span>Cielo</span>
+      </div>
+      <div class="search-wrap">
+        <input type="text" id="search-input" placeholder="Buscar ciudad..." autocomplete="off"/>
+        <button class="search-btn" id="search-btn">→</button>
+        <button class="geo-btn" id="geo-btn" title="Usar mi ubicación">⊕</button>
+        <ul class="autocomplete" id="autocomplete"></ul>
+      </div>
+      <div class="unit-toggle">
+        <button class="unit-btn active" id="btn-celsius">°C</button>
+        <button class="unit-btn" id="btn-fahrenheit">°F</button>
+      </div>
+    </header>
+
+    <!-- Main weather -->
+    <main class="main" id="main">
+      <div class="loading-state" id="loading">
+        <div class="spinner"></div>
+        <p>Obteniendo el tiempo...</p>
+      </div>
+
+      <div class="weather-content" id="weather-content" style="display:none">
+        <div class="current-weather">
+          <div class="location-info">
+            <h1 id="city-name">—</h1>
+            <p id="country-name" class="country"></p>
+            <p id="weather-desc" class="desc"></p>
+          </div>
+          <div class="temp-display">
+            <span id="temp-main" class="temp-main">—</span>
+            <span class="temp-unit-label" id="temp-unit-label">°C</span>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-icon">💧</div>
+            <div class="stat-value" id="humidity">—</div>
+            <div class="stat-label">Humedad</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💨</div>
+            <div class="stat-value" id="wind">—</div>
+            <div class="stat-label">Viento</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">👁️</div>
+            <div class="stat-value" id="visibility">—</div>
+            <div class="stat-label">Visibilidad</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🌡️</div>
+            <div class="stat-value" id="feels-like">—</div>
+            <div class="stat-label">Sensación</div>
+          </div>
+        </div>
+
+        <!-- 5-day forecast -->
+        <section class="forecast-section">
+          <h2 class="section-title">Próximos 5 días</h2>
+          <div class="forecast-list" id="forecast-list"></div>
+        </section>
+      </div>
+
+      <div class="error-state" id="error-state" style="display:none">
+        <div class="error-icon">⚠</div>
+        <p id="error-msg">Algo salió mal</p>
+        <button class="btn-retry" id="btn-retry">Reintentar</button>
+      </div>
+
+      <div class="welcome-state" id="welcome-state">
+        <div class="welcome-icon">◎</div>
+        <h2>¿Cómo está el cielo hoy?</h2>
+        <p>Busca una ciudad o usa tu ubicación</p>
+        <button class="btn-geo-welcome" id="btn-geo-welcome">Usar mi ubicación</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
